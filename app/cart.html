@@ -1,0 +1,97 @@
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-lg-12">
+                <h1 class="h1">
+                    Cart <small>Show your inner ninja!</small></h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-12">
+
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th class="text-center">Price</th>
+                        <th class="text-center">Total</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- repeat of the items in the cart -->
+                    <tr ng-repeat="item in items">
+                        <td class="col-sm-8 col-md-6">
+                            <div class="media">
+                                <a class="thumbnail pull-left">
+                                    <img class="media-object" src="http://placehold.it/72x72" style="width: 72px; height: 72px;"> </a>
+
+                                <div class="media-body">
+                                    <h4 class="media-heading"><a href="#">Product title</a></h4>
+                                    <h5 class="media-heading"> by <a href="#">Manufacturer</a></h5>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="col-sm-1 col-md-1 text-center">
+                            <input type="text" class="form-control" required>
+                        </td>
+                        <td class="col-sm-1 col-md-1 text-center"><strong>$0.00</strong></td>
+                        <td class="col-sm-1 col-md-1 text-center"><strong>$0.00</strong></td>
+                        <td class="col-sm-1 col-md-1">
+                            <button type="button" class="btn btn-danger">
+                                <span class="glyphicon glyphicon-remove"></span> Remove
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td><h5>Subtotal</h5></td>
+                        <td class="text-right"><h5><strong>$0.00</strong></h5></td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td><h5>Estimated shipping</h5></td>
+                        <td class="text-right"><h5><strong></strong></h5></td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td><h3>Total</h3></td>
+                        <td class="text-right"><h3><strong>$0.00</strong></h3></td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>
+                            <button type="button" class="btn btn-danger">
+                                <span class="glyphicon glyphicon-remove"></span> Empty Cart
+                            </button>
+                        </td>
+                        <td>
+                            <a ui-sref="products" class="btn btn-default">
+                                <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
+                            </a>
+                        </td>
+                        <td>
+                            <button class="btn btn-block btn-link">
+                                <i class="glyphicon glyphicon-ok"></i> Checkout
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
