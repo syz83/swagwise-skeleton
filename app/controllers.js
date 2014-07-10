@@ -10,36 +10,12 @@
         $scope.swag = SwagService.query();
     });
 
-    app.controller('ProductDetail', function($scope, $stateParams, SwagService, $interval){
+    app.controller('ProductDetail', function($scope, $stateParams, SwagService, $interval) {
         var product_id = $stateParams.id;
 
-        var rotator;
+        $scope.imageInterval = 3000;
 
-        $scope.item = SwagService.get({id: product_id}, function(item) {
-
-            $scope.productImage = item.images[0];
-
-        });
-
-        $scope.rotateImage = function(){
-
-//            if(rotator) {
-//                $interval.cancel(rotator);
-//            }
-
-            var counter = 1;
-            rotator = $interval(function(){
-                counter += 1;
-                if(counter >= $scope.item.images.length) {
-                    counter = 0;
-                }
-                $scope.productImage = $scope.item.images[counter];
-            }, 1500);
-        }
-
-        $scope.cancelRotator = function(){
-            $interval.cancel(rotator);
-        };
+        $scope.item = SwagService.get({id: product_id});
     });
 
 })(window.angular);

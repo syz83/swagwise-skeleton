@@ -2,16 +2,20 @@
     <div class="row">
         <div class="col-md-12">
             <div class="well well-lg">
-                <h2 ng-bind="item.title"></h2>
                 <div class="row">
-                    <div class="col-xs-8 col-md-10">
-                        <a href="#" class="thumbnail">
-                            <img ng-src="assets/images/{{productImage}}" alt="{{item.title}}" ng-mouseover="rotateImage()" ng-mouseleave="cancelRotator()">
-                        </a>
+                    <div class="col-xs-8 col-md-6">
+                        <carousel interval="imageInterval">
+                            <slide ng-repeat="image in item.images" active="slide.active">
+                                <img ng-src="assets/images/{{image}}" alt="{{item.title}}">
+                            </slide>
+                        </carousel>
                     </div>
-                    <p ng-bind="item.description"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus ad deserunt distinctio dolores doloribus, fugiat in laudantium libero mollitia, non odit rem. Dolore hic id necessitatibus possimus reiciendis, rem repellendus. </p>
+                    <div class="col-xs-4 col-md-6">
+                        <h2 ng-bind="item.title"></h2>
+                        <p ng-bind="item.description"></p>
+                        <p><a class="btn btn-primary" href="#" role="button"><i class="glyphicon glyphicon-plus"></i> Add to cart</a></p>
+                    </div>
                 </div>
-                <p><a class="btn btn-primary" href="#" role="button"><i class="glyphicon glyphicon-plus"></i> Add to cart</a></p>
             </div>
         </div>
     </div>
