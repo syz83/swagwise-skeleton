@@ -1,13 +1,26 @@
 (function(angular) {
     "use strict";
     var app = angular.module('Swagwise');
-    app.controller('SwagController', function($scope, SwagService){
-       $scope.swagSearch = '';
-//       SwagService.swag()
-//            .then(function(response){
-//                $scope.swag = response.data;
-//            });
-        $scope.swag = SwagService.query();
+    app.controller('SwagController', function($scope, SwagService, filterFilter){
+
+        var items = SwagService.query();
+
+        $scope.swagSearch = '';
+
+        $scope.swag = items;
+
+        $scope.$watch('swagSearch', function(newValue, oldValue) {
+            //if searching, filter swag
+            if(newValue){
+                //filter swag
+                $scope.swag = filterFilter(items, newValue, 'title');
+            }else {
+                //reset swag
+                $scope.swag = items;
+            }
+
+        });
+        //$scope.swag = filterFilter(SwagService.query(), $scope.swagSearch);
     });
 
     app.controller('ProductDetail', function($scope, $stateParams, SwagService, $interval) {
