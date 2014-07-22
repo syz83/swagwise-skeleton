@@ -4,7 +4,7 @@
 //anonymous funciton that gets invoked immediately
 (function(angular){
     "user strict";
-    var app = angular.module('Swagwise', ['ui.router', 'ui.bootstrap', 'ngResource']);
+    var app = angular.module('Swagwise', ['ui.router', 'ui.bootstrap', 'ngResource', 'ngCookies']);
 })(window.angular);
 
 

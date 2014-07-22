@@ -12,6 +12,9 @@ module.exports = function(app) {
             // use mongoose to get all products in the database
             mongoose.model('Swag').find(req.query, function(err, swag) {
 
+                //http://localhost:9001/api/swag/?isFeatured=true&foo=bar
+                //req.query = {isFeatured: true, foo:bar, ninja: false}
+
                 // if there is an error retrieving, send the error. nothing after res.send(err) will execute
                 if (err)
                     res.send(err);
