@@ -2,6 +2,106 @@
     "use strict";
     var app = angular.module('Swagwise');
 
+    app.controller('AppController', function($scope, $state, $timeout, Auth) {
+
+
+        function successCallback() {
+
+            $state.go('login');
+
+            $scope.alert = {
+                type: 'success',
+                message: 'You have been logged out.'
+            };
+
+            $timeout(function() {
+                $scope.alert = undefined;
+
+            }, 3000);
+        }
+        $scope.logout = function() {
+            Auth.logout(successCallback);
+        }
+
+    });
+
+    app.controller('LoginController', function($scope, $state, $timeout, Auth) {
+
+        function successCallback() {
+            $scope.alert = {
+                type: 'success',
+                message: 'You have successfully logged in.'
+            };
+
+            $timeout(function() {
+
+                $state.go('home');
+
+                $scope.alert = undefined;
+
+            }, 3000);
+        }
+
+        function errorCallback() {
+            $scope.alert = {
+                type: 'danger',
+                message: 'Invalid username and/or password'
+            };
+
+            $timeout(function() {
+                $scope.alert = undefined;
+
+            }, 3000);
+        }
+
+        $scope.login = function() {
+
+            Auth.login({
+                email: $scope.email,
+                password: $scope.password
+            }, successCallback, errorCallback);
+
+        };
+
+    });
+
+    app.controller('SignupController', function($scope, $state, $timeout, Auth) {
+
+        function successCallback() {
+            $scope.alert = {
+                type: 'success',
+                message: 'Your account has been created.'
+            };
+
+            $timeout(function() {
+
+                $state.go('login');
+
+                $scope.alert = undefined;
+
+            }, 3000);
+        }
+
+        function errorCallback() {
+            $scope.alert = {
+                type: 'danger',
+                message: 'There was an error in creating your account. Please try again.'
+            };
+
+            $timeout(function() {
+                $scope.alert = undefined;
+
+            }, 3000);
+        }
+
+        $scope.signup = function() {
+            Auth.signup({
+                email   : $scope.email,
+                password: $scope.password
+            }, successCallback, errorCallback);
+        };
+    });
+
     app.controller('HomeController', function($scope, SwagService){
 
         $scope.featuredProducts = SwagService.query({isFeatured: true});
